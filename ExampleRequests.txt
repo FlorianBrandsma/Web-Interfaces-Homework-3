@@ -1,0 +1,106 @@
+# Student
+query GetStudentById{
+  student(id:1){
+    name,
+    email,
+    class,
+    birthday
+  }
+}
+query GetStudents{
+  students{
+    name,
+    email,
+    class,
+    birthday
+  }
+}
+mutation CreateStudent{
+  createStudent(
+    name:"Florian",
+    email:"t7brfl00@students.oamk.fi",
+    class:"DIN17SP",
+    birthday:"1994-06-15"
+  ){
+    success
+  }
+}
+mutation UpdateStudent{
+  updateStudent(
+    id:2,
+    name:"Florian-updated",
+    email:"florianbrandsma@gmail.com"
+    class:"DIN16SP",
+    birthday:"1991-03-21"
+  ){
+    success
+  }
+}
+
+# Course
+query GetCourseById{
+  course(id:1){
+    description,
+    teacher
+  }
+}
+query GetCourses{
+  courses{
+    description,
+    teacher
+  }
+}
+mutation CreateCourse{
+  createCourse(
+    description:"Web Interfaces",
+    teacher:"Lasse Haverinen"
+  ){
+    success
+  }
+}
+mutation UpdateCourse{
+  updateCourse(
+    id:2,
+    description:"Android",
+    teacher:"Kari Laitinen"
+  ){
+    success
+  }
+}
+
+# Grade
+query GetSpecificGrade{
+  grade(studentId:2, courseId: 2){
+    grade
+  }
+}
+query GetAllGrades{
+  grades{
+    grade,
+    student{
+      name,
+      class
+    },
+    course{
+      description,
+      teacher
+    }
+  }
+}
+mutation CreateGrade{
+  createGrade(
+    grade:4,
+    studentId:2,
+    courseId:2
+  ){
+    success
+  }
+}
+mutation UpdateGrade{
+  updateGrade(
+    id:1,
+    grade:5
+  ){
+    success
+  }
+}
